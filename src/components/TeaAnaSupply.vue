@@ -266,9 +266,8 @@
           <tr>
             <td>
               <img
-                class="img img-fluid w-75 m-auto border-0 form-control"
+                class="img img-fluid w-75 border-0"
                 alt="Tea-ana-product"
-                style="height: 120px; width: 200px"
                 :src="path + supply.imagePath"
                 fluid
               />
@@ -447,5 +446,11 @@ export default {
 }
 .scrollable table {
   table-layout: fixed;
+}
+
+table td img {
+  width: 100% !important;
+  max-height: 130px !important;
+  min-height: 130px !important;
 }
 </style>

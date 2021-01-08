@@ -31,7 +31,7 @@
         </thead>
         <tbody
           id="#myTable"
-          v-for="(user, idx) in normalfilter"
+          v-for="(user, idx) in Customersearch"
           v-bind:key="idx"
         >
           <tr>
@@ -59,7 +59,7 @@ export default {
       email: null,
       password: null,
 
-      search: null,
+      search: "",
     };
   },
   methods: {
@@ -76,7 +76,7 @@ export default {
     },
   },
   computed: {
-    normalfilter: function () {
+    Customersearch: function () {
       return this.users.filter((user) => {
         return user.name.match(new RegExp(`${this.search}`, "gi"));
       });

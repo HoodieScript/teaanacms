@@ -162,7 +162,7 @@
         </thead>
         <tbody
           id="#myTable"
-          v-for="(order, idx) in normalfilter"
+          v-for="(order, idx) in Supplyordersearch"
           v-bind:key="idx"
         >
           <tr>
@@ -263,7 +263,7 @@ export default {
   },
 
   computed: {
-    normalfilter: function () {
+    Supplyordersearch: function () {
       return this.orders.filter((order) => {
         return order.uid.match(new RegExp(`${this.search}`, "gi"));
       });
