@@ -1,11 +1,22 @@
 <template>
   <section class="container-fluid">
     <div
-      class="bg-white shadow-sm row p-0"
+      class="bg-white shadow-sm row p-0 m-5"
       style="border-radius: 20px !important"
     >
-      <div class="col-lg-6 p-3">
-        <h4 class="font-weight-bold">Orders</h4>
+      <div class="col-lg-9 pr-3 pb-3 pt-3 pl-5">
+        <h4 class="font-weight-bold text-left">Orders</h4>
+      </div>
+      <div class="col-lg-3 p-3">
+        <div class="input-group">
+          <input
+            type="text"
+            v-model="search"
+            placeholder="ex. S0-  QWERTYZXCVNMJ387"
+            class="form-control"
+            style="max-height: 200px"
+          />
+        </div>
       </div>
     </div>
 
@@ -149,7 +160,11 @@
             <th style="width: 120px !important">Action</th>
           </tr>
         </thead>
-        <tbody id="#myTable" v-for="(order, idx) in orders" v-bind:key="idx">
+        <tbody
+          id="#myTable"
+          v-for="(order, idx) in normalfilter"
+          v-bind:key="idx"
+        >
           <tr>
             <td>{{ order.uid }}</td>
             <td>{{ order.address }}</td>
@@ -195,6 +210,7 @@ export default {
       quantity: null,
       user: null,
       supply: null,
+      search: "",
     };
   },
   async created() {
@@ -246,7 +262,13 @@ export default {
     },
   },
 
-  computed: {},
+  computed: {
+    normalfilter: function () {
+      return this.orders.filter((order) => {
+        return order.uid.match(new RegExp(`${this.search}`, "gi"));
+      });
+    },
+  },
 };
 </script>
 <style scoped>

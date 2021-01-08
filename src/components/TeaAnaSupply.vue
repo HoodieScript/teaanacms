@@ -1,11 +1,11 @@
 <template>
   <section class="container-fluid">
     <div
-      class="bg-white shadow-sm row p-0"
+      class="bg-white shadow-sm row p-0 m-5"
       style="border-radius: 20px !important"
     >
-      <div class="col-lg-6 p-3">
-        <h4 class="font-weight-bold">Supplies</h4>
+      <div class="col-lg-6 pr-3 pb-3 pt-3 pl-5">
+        <h4 class="font-weight-bold text-left">Supplies</h4>
       </div>
       <div class="col-lg-6 p-3">
         <div class="d-flex justify-content-between">
@@ -19,21 +19,15 @@
               New Supply
             </button>
           </div>
-          <!-- <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1"
-                ><i class="fas fa-search"></i
-              ></span>
-            </div>
+          <div class="input-group">
             <input
               type="text"
+              v-model="search"
+              placeholder="ex. Jiggler "
               class="form-control"
-              required
-              placeholder="search"
-              aria-label="search"
-              aria-describedby="basic-addon1"
+              style="max-height: 200px"
             />
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
@@ -264,7 +258,11 @@
             <th style="width: 120px !important" colspan="2">Action</th>
           </tr>
         </thead>
-        <tbody id="#myTable" v-for="(supply, idx) in supplies" v-bind:key="idx">
+        <tbody
+          id="#myTable"
+          v-for="(supply, idx) in Supplysearch"
+          v-bind:key="idx"
+        >
           <tr>
             <td>
               <img
@@ -322,6 +320,8 @@ export default {
       categoryId: null,
       type: null,
       path: "https://api.tea-ana.com/uploads/",
+
+      search: "",
     };
   },
   async created() {
@@ -423,6 +423,13 @@ export default {
         (this.categoryId = ""),
         (this.type = "");
       this.$refs.fileupload.value = null;
+    },
+  },
+  computed: {
+    Supplysearch: function () {
+      return this.supplies.filter((supply) => {
+        return supply.name.match(new RegExp(`${this.search}`, "gi"));
+      });
     },
   },
 };

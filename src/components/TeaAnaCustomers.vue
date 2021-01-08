@@ -1,11 +1,22 @@
 <template>
   <section class="container-fluid">
     <div
-      class="bg-white shadow-sm row p-0"
+      class="bg-white shadow-sm row p-0 m-5"
       style="border-radius: 20px !important"
     >
-      <div class="col-lg-6 p-3">
-        <h4 class="font-weight-bold">Customers</h4>
+      <div class="col-lg-9 pr-3 pb-3 pt-3 pl-5">
+        <h4 class="font-weight-bold text-left">Customers</h4>
+      </div>
+      <div class="col-lg-3 p-3">
+        <div class="input-group">
+          <input
+            type="text"
+            v-model="search"
+            placeholder="ex. John Doe"
+            class="form-control"
+            style="max-height: 200px"
+          />
+        </div>
       </div>
     </div>
 
@@ -18,7 +29,11 @@
             <th>Phone</th>
           </tr>
         </thead>
-        <tbody id="#myTable" v-for="(user, idx) in users" v-bind:key="idx">
+        <tbody
+          id="#myTable"
+          v-for="(user, idx) in normalfilter"
+          v-bind:key="idx"
+        >
           <tr>
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
@@ -43,6 +58,8 @@ export default {
       phone: null,
       email: null,
       password: null,
+
+      search: null,
     };
   },
   methods: {
@@ -57,37 +74,17 @@ export default {
       );
       this.users = response.data.data;
     },
-
-    /* insert */
-
-    /*    insertAddon: async function () {
-      axios
-        .post(
-          "https://api.tea-ana.com/v1/addons",
-
-          {
-            name: this.name,
-            price: this.price,
-            category_id: this.category_id,
-          }
-        )
-        .then((response) => {
-          console.log(response);
-          $("#newAddons").modal("hide");
-          swal("Record Created!", "New changes are applied!", "success");
-
-        })
-        .catch((error) => {
-          console.log(error.response);
-        });
-    },
- */
   },
-
-  computed: {},
+  computed: {
+    normalfilter: function () {
+      return this.users.filter((user) => {
+        return user.name.match(new RegExp(`${this.search}`, "gi"));
+      });
+    },
+  },
   async created() {
     // fetch the data pag ka load
-    
+
     setInterval(
       function () {
         this.getUsers();
