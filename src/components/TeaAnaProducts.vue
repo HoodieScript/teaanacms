@@ -209,12 +209,12 @@
                 <small class="pb-3">Product Category</small>
                 <select
                   class="form-control custom-select"
-                  v-model="categories.name"
+                  v-model="eachofprods.category_id"
                 >
-                  <option value="Milktea">Milktea</option>
-                  <option value="Coffee">Coffee</option>
-                  <option value="Wings">Wings</option>
-                  <option value="Takoyaki">Takoyaki</option>
+                  <option value="1">Milktea</option>
+                  <option value="2">Coffee</option>
+                  <option value="3">Wings</option>
+                  <option value="4">Takoyaki</option>
                 </select>
               </div>
 
