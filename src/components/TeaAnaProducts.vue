@@ -331,7 +331,7 @@ export default {
       function () {
         this.getProducts();
       }.bind(this),
-      500
+      10000
     );
   },
 

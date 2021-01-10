@@ -329,7 +329,7 @@ export default {
       function () {
         this.getSupplies();
       }.bind(this),
-      500
+      10000
     );
   },
   methods: {

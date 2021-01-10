@@ -260,7 +260,7 @@ export default {
       function () {
         this.getAddons();
       }.bind(this),
-      500
+      10000
     );
   },
   methods: {

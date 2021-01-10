@@ -89,7 +89,7 @@ export default {
       function () {
         this.getUsers();
       }.bind(this),
-      500
+      10000
     );
   },
 };

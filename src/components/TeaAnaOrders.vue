@@ -220,7 +220,7 @@ export default {
       function () {
         this.getOrders();
       }.bind(this),
-      500
+      10000
     );
   },
   methods: {

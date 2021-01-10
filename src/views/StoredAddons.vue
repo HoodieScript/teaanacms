@@ -20,7 +20,7 @@
           <router-link to="/teaana-products">Products</router-link></a
         >
         <a class="list-group-item list-group-item-action bg-transparent">
-          <router-link to="/teaana-supplies">Supplies</router-link></a
+          <router-link to="/teaana-supplies">Anna Supplies</router-link></a
         >
 
         <a class="list-group-item list-group-item-action bg-transparent">
