@@ -255,7 +255,7 @@ export default {
   },
   async created() {
     // fetch the data pag ka load
-
+    this.getAddons();
     setInterval(
       function () {
         this.getAddons();

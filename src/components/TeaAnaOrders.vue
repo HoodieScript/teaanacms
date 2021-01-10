@@ -215,7 +215,7 @@ export default {
   },
   async created() {
     // fetch the data pag ka load
-
+    this.getOrders();
     setInterval(
       function () {
         this.getOrders();

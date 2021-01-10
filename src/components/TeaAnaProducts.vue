@@ -326,6 +326,7 @@ export default {
   },
   async created() {
     // fetch the data pag ka load
+    this.getProducts();
     this.getCategories();
     setInterval(
       function () {

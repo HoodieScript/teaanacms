@@ -325,6 +325,7 @@ export default {
   },
   async created() {
     // fetch the data pag ka load
+    this.getSupplies();
     setInterval(
       function () {
         this.getSupplies();
